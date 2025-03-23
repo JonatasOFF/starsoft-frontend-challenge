@@ -11,7 +11,7 @@ function totalCalculed(cartItems: Record<string, CartItem>) {
 
   return total
 }
-
+  
 interface ProductsState {
   items: GetProductsAPI['data']
   metadata: GetProductsAPI['metadata']

@@ -52,7 +52,7 @@ Execute o servidor de desenvolvimento:
 
     React-Icons: Biblioteca para buscar por icones.
 
-Possíveis Limitações e Melhorias Futuras
+# Possíveis Limitações e Melhorias Futuras
 
     Otimização de performance: Analisar e otimizar o carregamento de imagens e outros recursos para melhorar o tempo de resposta da aplicação.
 

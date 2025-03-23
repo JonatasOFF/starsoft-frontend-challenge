@@ -28,6 +28,15 @@ export const Price = styled.div`
     height: 2.9rem;
   }
 `
+
+
+export const Name = styled.div`
+  color: ${colors.white1};
+  font-size: ${font.sizes.heading06};
+  margin-top: 1.6rem;
+`
+
+
 export const Description = styled.div`
   max-height: 2rem;
   max-width: 100%;
@@ -46,10 +55,4 @@ export const Image = styled.img`
   margin-bottom: 4.9rem;
   width: 28.9rem;
   height: 25.8rem;
-`
-
-export const Name = styled.div`
-  color: ${colors.white1};
-  font-size: ${font.sizes.heading06};
-  margin-top: 1.6rem;
 `

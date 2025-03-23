@@ -1,4 +1,3 @@
-// __tests__/productsSlice.test.ts
 import {
   productsReducer,
   addToCart,
@@ -7,6 +6,9 @@ import {
   decrementQuantity,
   resetPagination,
   nextPage,
+  addProducts,
+  addMetadata,
+  addToDetail,
 } from '@/store'
 import { GetProductsAPI } from '@/models'
 
@@ -24,6 +26,14 @@ describe('productsSlice', () => {
       pageCount: 0,
     },
     page: 1,
+    productDetail: {
+      id: 0,
+      name: '',
+      description: '',
+      price: 0,
+      image: '',
+      createdAt: '',
+    },
     limit: 10,
   }
 
@@ -135,5 +145,73 @@ describe('productsSlice', () => {
     const newState = productsReducer(stateWithPage, action)
 
     expect(newState.page).toBe(2)
+  })
+
+  it('should add products to the state without duplicates', () => {
+    const product: GetProductsAPI['data'][number] = {
+      id: 1,
+      name: 'Product 1',
+      price: 100,
+      description: '',
+    }
+    const product2: GetProductsAPI['data'][number] = {
+      id: 2,
+      name: 'Product 2',
+      price: 200,
+      description: '',
+    }
+    const action = addProducts([product, product2])
+    const newState = productsReducer(initialState, action)
+
+    expect(newState.items).toEqual([product, product2])
+  })
+
+  it('should not add duplicate products to the state', () => {
+    const product: GetProductsAPI['data'][number] = {
+      id: 1,
+      name: 'Product 1',
+      price: 100,
+      description: '',
+    }
+  
+    const firstProduct = addProducts([product])
+    const secondProduct = addProducts([product])
+    
+    productsReducer(initialState, firstProduct)
+
+    const newState = productsReducer(initialState, secondProduct)
+  
+    expect(newState.items).toEqual([product]) 
+  })
+  
+
+  it('should set product detail', () => {
+    const product: GetProductsAPI['data'][number] = {
+      id: 1,
+      name: 'Product 1',
+      price: 100,
+      description: '',
+    }
+
+    const action = addToDetail(product)
+    const newState = productsReducer(initialState, action)
+
+    expect(newState.productDetail).toEqual(product)
+  })
+
+  it('should add metadata', () => {
+    const metadata = {
+      count: 10,
+      hasNextPage: true,
+      hasPreviousPage: false,
+      limit: 10,
+      page: 1,
+      pageCount: 1,
+    }
+
+    const action = addMetadata(metadata)
+    const newState = productsReducer(initialState, action)
+
+    expect(newState.metadata).toEqual(metadata)
   })
 })

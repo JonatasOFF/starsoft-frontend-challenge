@@ -2,16 +2,16 @@ import { CardBuy } from './components'
 import * as S from './styles'
 import { ListItemsProps } from './types'
 
-export function ListItems({ list = [], onBuy }: ListItemsProps) {
+export function ListItems({ list = [], onBuy, onDetail }: ListItemsProps) {
   return (
     <S.Container>
       {list
-        .filter(({ name }) => !!name)
         .map((product) => (
           <CardBuy
-            key={product.id}
+            key={`${product.name}-buy`}
             {...product}
             onBuy={() => onBuy?.(product)}
+            onDetail={() => onDetail?.(product)}
           />
         ))}
     </S.Container>

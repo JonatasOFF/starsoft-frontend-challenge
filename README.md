@@ -32,6 +32,8 @@ Execute o servidor de desenvolvimento:
 
     Listagem de NFTs: Exibição de uma lista de tokens não fungíveis disponíveis para compra, com detalhes como imagem, nome e preço.
 
+    Visualizar detalhes do item: É possível ver detalhes sobre o item clicando na imagem do item na listagem de items.
+
     Carrinho de Compras: Funcionalidade que permite ao usuário adicionar NFTs ao carrinho, visualizar os itens adicionados e proceder para a finalização da compra.
 
     Responsividade: A interface adapta-se a diferentes tamanhos de tela, garantindo uma experiência consistente em dispositivos móveis e desktops.

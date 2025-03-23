@@ -36,10 +36,9 @@ export function Cart({
           <>
             <S.List>
               {list
-                .filter(({ name }) => !!name)
                 .map((product) => (
                   <CardCart
-                    key={product.id}
+                    key={`${product.id}-cart`}
                     {...product}
                     onRemove={() => onRemove?.(product.id)}
                     onIncrement={() => onIncrement?.(product.id)}

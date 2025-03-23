@@ -4,6 +4,6 @@ import { GetProductsAPI, Product } from '@/models'
 
 export type ListItemsProps = {
   list?: GetProductsAPI['data']
-
-  onBuy?: (product: Product) => void
+  onBuy?: (product: Product) => void;
+  onDetail?: (product: Product) => void;
 }

@@ -11,6 +11,7 @@ import {
   addMetadata,
   addProducts,
   addToCart,
+  addToDetail,
   decrementQuantity,
   incrementQuantity,
   nextPage,
@@ -21,13 +22,16 @@ import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
+import { useRouter } from 'next/navigation';
 
 export function Home() {
   const refContent = useRef<HTMLDivElement>(null)
 
   const { page, limit, items, metadata, cartItems, total } = useSelector(
-    (state: RootState) => state.pagination
+    (state: RootState) => state.products
   )
+
+  const router = useRouter();
 
   const [openCart, setOpenCart] = useState<boolean>(false)
 
@@ -97,6 +101,10 @@ export function Home() {
               <ListItems
                 list={items}
                 onBuy={(product) => dispatch(addToCart(product))}
+                onDetail={(product) =>  {
+                  dispatch(addToDetail(product))
+                  router.push('/product')
+                }}
               />
             )}
             {error && (
@@ -117,7 +125,6 @@ export function Home() {
               {progress === 100 && 'Você já viu tudo'}
             </Button>
           </S.LoadMore>
-          <S.Footer>STARSOFT © TODOS OS DIREITOS RESERVADOS</S.Footer>
         </S.Container>
         <Cart
           open={openCart}

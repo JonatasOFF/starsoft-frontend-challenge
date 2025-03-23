@@ -4,4 +4,6 @@ export type CardBuyProps = Partial<{
   description: string
   price: number
   onBuy: () => void
+  onDetail: () => void
+  
 }>

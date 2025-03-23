@@ -51,22 +51,10 @@ export const LoadMore = styled.div`
   width: 90%;
   max-width: 40rem;
   margin: auto;
-  margin-bottom: 0;
+  margin-bottom: 2.4rem;
 `
 
-export const Footer = styled.footer`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2.4rem;
-  text-align: center;
-  width: 100%;
-  height: 7.6rem;
-  color: #ffffff70;
-  font-size: ${font.sizes.normal};
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
-`
+
 
 export const Loading = styled.div`
   display: flex;

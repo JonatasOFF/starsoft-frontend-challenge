@@ -11,18 +11,25 @@ export function CardBuy({
   price,
   image,
   onBuy,
+  onDetail,
 }: CardBuyProps) {
   return (
     <S.Container
       as={motion.div}
       whileHover={{
-      
         scale: 1.05,
       }}
       transition={{ type: 'spring', stiffness: 200, damping: 10 }}
     >
       {image && (
-        <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+        <motion.div
+          style={{
+            cursor: 'pointer'
+          }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+          onClick={() => onDetail?.()}
+        >
           {' '}
           <Image src={image} width={210} height={150} alt="Image" priority />
         </motion.div>

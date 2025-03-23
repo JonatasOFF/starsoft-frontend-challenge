@@ -11,11 +11,12 @@ function totalCalculed(cartItems: Record<string, CartItem>) {
 
   return total
 }
-  
+
 interface ProductsState {
   items: GetProductsAPI['data']
   metadata: GetProductsAPI['metadata']
   cartItems: Record<string, CartItem>
+  productDetail: Product
   total: number
   page: number
   limit: number
@@ -34,14 +35,36 @@ const initialState: ProductsState = {
     pageCount: 0,
   },
   page: 1,
+  productDetail: {
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    image: '',
+    createdAt: '',
+  },
   limit: 10,
 }
 
 const productsSlice = createSlice({
-  name: 'pagination',
+  name: 'products',
   initialState,
   reducers: {
     addProducts: (state, action: PayloadAction<GetProductsAPI['data']>) => {
+      let existItem = false
+
+      action.payload.forEach((item1) => {
+        if (
+          state.items.some(
+            (item2) => JSON.stringify(item2) === JSON.stringify(item1)
+          )
+        ) {
+          existItem = true
+          return
+        }
+      })
+
+      if (existItem) return
       state.items = [...state.items, ...action.payload]
     },
     addMetadata: (state, action: PayloadAction<GetProductsAPI['metadata']>) => {
@@ -64,6 +87,14 @@ const productsSlice = createSlice({
         state.cartItems[product.id as number] = { ...product, quantity: 1 }
       }
       state.total = totalCalculed(state.cartItems)
+    },
+    addToDetail: (
+      state,
+      action: PayloadAction<GetProductsAPI['data'][number]>
+    ) => {
+      const product = action.payload
+
+      state.productDetail = product
     },
     removeFromCart: (state, action: PayloadAction<number | undefined>) => {
       if (!action.payload) return
@@ -106,6 +137,7 @@ export const {
   resetPagination,
   addProducts,
   addMetadata,
+  addToDetail,
   addToCart,
   removeFromCart,
   incrementQuantity,

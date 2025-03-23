@@ -15,7 +15,7 @@ export const Container = styled(Card)`
   padding: 2.45rem 2.6rem;
   box-shadow: 0 0.1rem 0.2rem 0 #0000001a;
 
-  > img {
+  > div > img {
     position: relative !important;
     border-radius: 0.8rem;
     aspect-ratio: 1/1;

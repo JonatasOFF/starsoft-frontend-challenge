@@ -22,7 +22,7 @@ export const Container = styled.div`
   height: 100%;
 `
 
-export const Header = styled.div`
+export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: start;
@@ -54,7 +54,7 @@ export const LoadMore = styled.div`
   margin-bottom: 0;
 `
 
-export const Footer = styled.div`
+export const Footer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;

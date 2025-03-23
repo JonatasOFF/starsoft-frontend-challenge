@@ -3,7 +3,13 @@ import { colors, font } from './../../common/styles/theme'
 import styled from 'styled-components'
 import { Price } from '@/primitives'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  > div:last-child {
+    width: calc(100% - 2rem) !important;
+    display: flex;
+    margin: auto;
+  }
+`
 
 export const Header = styled.div`
   display: flex;

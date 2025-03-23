@@ -19,6 +19,6 @@ describe('<Navbar />', () => {
 
     const navbar = screen.getByText(/Test/i)
 
-    expect(navbar.className).includes('123')
+    expect(navbar.className).toContain('123')
   })
 })
